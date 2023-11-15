@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>尝试写博客的方法以及涵盖</title>
+      <link href="/2023/11/15/%E5%B0%9D%E8%AF%95%E5%86%99blog%E7%9A%84%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E6%B6%B5%E7%9B%96%E7%9A%84%E5%86%85%E5%AE%B9/"/>
+      <url>/2023/11/15/%E5%B0%9D%E8%AF%95%E5%86%99blog%E7%9A%84%E6%96%B9%E6%B3%95%E4%BB%A5%E5%8F%8A%E6%B6%B5%E7%9B%96%E7%9A%84%E5%86%85%E5%AE%B9/</url>
+      
+        <content type="html"><![CDATA[<!-- 将图片放在标题上方 --><p><img src="/images/lake.png" alt="示例图片"></p><h1 id="尝试写博客的方法以及涵盖"><a href="#尝试写博客的方法以及涵盖" class="headerlink" title="尝试写博客的方法以及涵盖"></a>尝试写博客的方法以及涵盖</h1><p>欢迎来到我的博客！写博客是分享知识、经验和思考的好方式。如果你正考虑尝试写博客，以下是一些建议和方法，以及你可以覆盖的一些主题。</p><h2 id="为什么写博客？"><a href="#为什么写博客？" class="headerlink" title="为什么写博客？"></a>为什么写博客？</h2><p><img src="/images/tree.png" alt="示例图片"><br>写博客有很多好处，包括但不限于：</p><ol><li><p><strong>分享知识和经验：</strong> 将你的学习和工作经验分享给他人，帮助他们解决问题或获取新的见解。</p></li><li><p><strong>建立个人品牌：</strong> 博客是展示你专业知识和兴趣的一个平台，有助于建立个人品牌。</p></li><li><p><strong>提高写作能力：</strong> 持续写作有助于提高表达和沟通能力。</p></li><li><p><strong>记录学习过程：</strong> 记录你的学习过程，方便日后回顾和总结。</p></li></ol><h2 id="如何开始写博客？"><a href="#如何开始写博客？" class="headerlink" title="如何开始写博客？"></a>如何开始写博客？</h2><h3 id="1-选择博客平台"><a href="#1-选择博客平台" class="headerlink" title="1. 选择博客平台"></a>1. 选择博客平台</h3><p>选择一个适合你的博客平台。常见的博客平台包括：</p><ul><li><a href="https://hexo.io/">Hexo</a></li><li><a href="https://jekyllrb.com/">Jekyll</a></li><li><a href="https://wordpress.org/">WordPress</a></li></ul><p>More info: <a href="https://blog.csdn.net/qq_58608526/article/details/124652412">Writing</a></p><h3 id="2-创建博客"><a href="#2-创建博客" class="headerlink" title="2. 创建博客"></a>2. 创建博客</h3><p>使用选定的博客平台创建你的博客。在 Hexo 中，你可以运行以下命令创建新博客：</p><pre><code class="bash">hexo new &quot;My First Blog&quot;</code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2023/11/14/hello-world/"/>
+      <url>/2023/11/14/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p><img src="/images/tree.png" alt="示例图片"><br>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
