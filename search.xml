@@ -4,9 +4,38 @@
   
     
     <entry>
+      <title>哈希表的学习及应用</title>
+      <link href="/2023/11/17/%E5%93%88%E5%B8%8C%E8%A1%A8%E7%9A%84%E5%AD%A6%E4%B9%A0%E5%8F%8A%E5%BA%94%E7%94%A8/"/>
+      <url>/2023/11/17/%E5%93%88%E5%B8%8C%E8%A1%A8%E7%9A%84%E5%AD%A6%E4%B9%A0%E5%8F%8A%E5%BA%94%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<p><img src="/images/tree.png" alt="示例图片"></p><h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h1><p>哈希表是一種常見的數據結構，用於快速查找、插入和刪除。在判斷一個元素是否在集合中出現時，可以考慮使用哈希表。以下是一些常見的哈希結構：</p><h2 id="1-數組"><a href="#1-數組" class="headerlink" title="1. 數組"></a>1. 數組</h2><p>當鍵是整數或具有範圍的整數時，可以使用數組。例如，數組可用於實現計數排序，統計元素出現的次數。當需要直接通過索引或位置訪問元素時，數組是一個很好的選擇。</p><h2 id="2-Set"><a href="#2-Set" class="headerlink" title="2. Set"></a>2. Set</h2><p>當只需要存儲不重復的元素，並且不需要與每個元素關聯其他信息時，可以使用 Set。Set 提供了 O(1) 時間復雜度的查找和插入操作，用於判斷元素是否存在。</p><h2 id="3-Map"><a href="#3-Map" class="headerlink" title="3. Map"></a>3. Map</h2><p>當需要將鍵映射到值時，或者需要關聯每個鍵（或一組鍵）與一些信息時，可以使用 Map。在一些問題中，例如統計元素的頻率，將元素分組等，Map 是一個常見的選擇。如果需要在 O(1) 時間內查找、插入和刪除鍵值對，HashMap 是一個很好的選擇。如果需要按照鍵的順序（升序或降序）來迭代訪問元素，可以使用 TreeMap。</p><h1 id="哈希碰撞"><a href="#哈希碰撞" class="headerlink" title="哈希碰撞"></a>哈希碰撞</h1><p>hashCode得到的数值大于 哈希表的大小了，也就是大于tableSize，这意味着避免不了会有几个数据同时映射到哈希表 同一个索引下标的位置，称为哈希碰撞。</p><h2 id="1-拉链法"><a href="#1-拉链法" class="headerlink" title="1.拉链法"></a>1.拉链法</h2><p>这种方案由数组和链表两种数据结构组成。如果发生了元素重复，就让冲突的位置变为一个链表。</p><h2 id="2-线性探测法"><a href="#2-线性探测法" class="headerlink" title="2.线性探测法"></a>2.线性探测法</h2><p>当经过哈希函数计算得到的值发生冲突后，将冲突元素放在旁边空闲位置。</p><h1 id="LeetCode-242-有效的字母異位詞"><a href="#LeetCode-242-有效的字母異位詞" class="headerlink" title="LeetCode 242. 有效的字母異位詞"></a>LeetCode 242. <a href="https://leetcode.cn/problems/valid-anagram/">有效的字母異位詞</a></h1><p>給定兩個字符串 s 和 t，編寫一個函數來判斷 t 是否是 s 的字母異位詞。</p><p><strong>示例 :</strong></p><pre><code>输入: s = &quot;anagram&quot;, t = &quot;nagaram&quot;输出: true输入: s = &quot;rat&quot;, t = &quot;car&quot;输出: false</code></pre><h2 id="题解（數組）"><a href="#题解（數組）" class="headerlink" title="题解（數組）:"></a>题解（數組）:</h2><p>定义一个数组叫做record用来上记录字符串s里字符出现的次数。需要把字符映射到数组也就是哈希表的索引下标上，因为字符a到字符z的ASCII是26个连续的数值，所以字符a映射为下标0，相应的字符z映射为下标25。</p><pre><code>class Solution &#123;    public List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs) &#123;        Map&lt;String, List&lt;String&gt;&gt; map = new HashMap&lt;String, List&lt;String&gt;&gt;();        for (String str : strs) &#123;            int[] counts = new int[26];            int length = str.length();            for (int i = 0; i &lt; length; i++) &#123;                counts[str.charAt(i) - &#39;a&#39;]++;            &#125;            // 将每个出现次数大于 0 的字母和出现次数按顺序拼接成字符串，作为哈希表的键            StringBuffer sb = new StringBuffer();            for (int i = 0; i &lt; 26; i++) &#123;                if (counts[i] != 0) &#123;                    sb.append((char) (&#39;a&#39; + i));                    sb.append(counts[i]);                &#125;            &#125;            String key = sb.toString();            List&lt;String&gt; list = map.getOrDefault(key, new ArrayList&lt;String&gt;());            list.add(str);            map.put(key, list);        &#125;        return new ArrayList&lt;List&lt;String&gt;&gt;(map.values());    &#125;&#125;</code></pre><h1 id="LeetCode-49-字母异位词分组"><a href="#LeetCode-49-字母异位词分组" class="headerlink" title="LeetCode 49. 字母异位词分组"></a>LeetCode 49. <a href="https://leetcode.cn/problems/group-anagrams/?envType=study-plan-v2&envId=top-100-liked">字母异位词分组</a></h1><p>给定一个字符串数组，将字母异位词组合在一起。字母异位词指的是由相同的字符按照不同的顺序组成的单词。</p><p><strong>示例 :</strong></p><pre><code>输入: [&quot;eat&quot;, &quot;tea&quot;, &quot;tan&quot;, &quot;ate&quot;, &quot;nat&quot;, &quot;bat&quot;]输出: [[&quot;ate&quot;,&quot;eat&quot;,&quot;tea&quot;],[&quot;nat&quot;,&quot;tan&quot;],[&quot;bat&quot;]]</code></pre><h2 id="题解（map）"><a href="#题解（map）" class="headerlink" title="题解（map）:"></a>题解（map）:</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> Algorithms </category>
+          
+          <category> Data Structures </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hash Table </tag>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java Web 學習路線</title>
-      <link href="/2023/11/16/hello-world/"/>
-      <url>/2023/11/16/hello-world/</url>
+      <link href="/2023/11/16/Java%20Web%20%E5%AD%B8%E7%BF%92%E8%B7%AF%E7%B7%9A/"/>
+      <url>/2023/11/16/Java%20Web%20%E5%AD%B8%E7%BF%92%E8%B7%AF%E7%B7%9A/</url>
       
         <content type="html"><![CDATA[<p><img src="/images/river.png" alt="示例图片"></p><h1 id="Java-Web-學習路線"><a href="#Java-Web-學習路線" class="headerlink" title="Java Web 學習路線"></a>Java Web 學習路線</h1><h2 id="1-Java-基礎知識"><a href="#1-Java-基礎知識" class="headerlink" title="1. Java 基礎知識"></a>1. Java 基礎知識</h2><ul><li><input disabled="" type="checkbox"> 確保對 Java 語言基本語法有足夠了解</li><li><input disabled="" type="checkbox"> 學習面向對象編程 (OOP) 的基本概念</li></ul><h2 id="2-Servlet-和-JSP"><a href="#2-Servlet-和-JSP" class="headerlink" title="2. Servlet 和 JSP"></a>2. Servlet 和 JSP</h2><ul><li><input disabled="" type="checkbox"> 了解 Servlet 的生命週期和基本用法</li><li><input disabled="" type="checkbox"> 理解 JSP 的基本語法和使用方式</li><li><input disabled="" type="checkbox"> 學習如何在 Servlet 中使用 JavaBean 和表單處理</li></ul><h2 id="3-Java-EE（現在稱為-Jakarta-EE）"><a href="#3-Java-EE（現在稱為-Jakarta-EE）" class="headerlink" title="3. Java EE（現在稱為 Jakarta EE）"></a>3. Java EE（現在稱為 Jakarta EE）</h2><ul><li><input disabled="" type="checkbox"> 瞭解 Java EE 的概念和組件（如 EJB、JMS 等）</li><li><input disabled="" type="checkbox"> 學習如何使用 Java Persistence API (JPA) 處理數據持久性</li><li><input disabled="" type="checkbox"> 掌握 JavaServer Faces (JSF) 框架</li></ul><h2 id="4-Spring-框架"><a href="#4-Spring-框架" class="headerlink" title="4. Spring 框架"></a>4. Spring 框架</h2><ul><li><input disabled="" type="checkbox"> 學習 Spring Framework 的基本概念和核心模組</li><li><input disabled="" type="checkbox"> 掌握 Spring MVC，用於構建 Web 應用程序</li><li><input disabled="" type="checkbox"> 學習 Spring Boot，加速應用程序的開發和部署</li></ul><h2 id="5-前端開發"><a href="#5-前端開發" class="headerlink" title="5. 前端開發"></a>5. 前端開發</h2><ul><li><input disabled="" type="checkbox"> 掌握 HTML、CSS 和 JavaScript 基礎知識</li><li><input disabled="" type="checkbox"> 學習一個前端框架，如 React、Angular 或 Vue.js</li><li><input disabled="" type="checkbox"> 瞭解前後端分離的概念和 RESTful API 的設計</li></ul><h2 id="6-數據庫"><a href="#6-數據庫" class="headerlink" title="6. 數據庫"></a>6. 數據庫</h2><ul><li><input disabled="" type="checkbox"> 熟悉關聯型數據庫，如 MySQL 或 Oracle</li><li><input disabled="" type="checkbox"> 學習使用 Hibernate 或 MyBatis 來實現對數據庫的訪問</li><li><input disabled="" type="checkbox"> 了解 NoSQL 數據庫的基本概念，如 MongoDB 或 Cassandra</li></ul><h2 id="7-安全性"><a href="#7-安全性" class="headerlink" title="7. 安全性"></a>7. 安全性</h2><ul><li><input disabled="" type="checkbox"> 學習如何防止常見的 Web 應用程序安全漏洞，如 SQL 注入和跨站腳本（XSS）</li><li><input disabled="" type="checkbox"> 瞭解身份驗證和授權的基本原則</li><li><input disabled="" type="checkbox"> 掌握 HTTPS 和加密技術</li></ul><h2 id="8-工具和開發流程"><a href="#8-工具和開發流程" class="headerlink" title="8. 工具和開發流程"></a>8. 工具和開發流程</h2><ul><li><input disabled="" type="checkbox"> 使用版本控制工具，如 Git</li><li><input disabled="" type="checkbox"> 學習使用 Maven 或 Gradle 進行項目建構</li><li><input disabled="" type="checkbox"> 瞭解持續集成和持續交付（CI&#x2F;CD）的基本概念</li></ul><h2 id="9-部署和監控"><a href="#9-部署和監控" class="headerlink" title="9. 部署和監控"></a>9. 部署和監控</h2><ul><li><input disabled="" type="checkbox"> 學習如何將應用程序部署到 Web 伺服器，如 Apache Tomcat 或 Jetty</li><li><input disabled="" type="checkbox"> 掌握應用程序監控和日誌記錄的基本方法</li><li><input disabled="" type="checkbox"> 了解容器化技術，如 Docker 和 Kubernetes</li></ul>]]></content>
       

@@ -1,0 +1,57 @@
+<!DOCTYPE html><html class="appearance-dark" lang="en"><head><meta charset="UTF-8"><title>哈希表的学习及应用</title><meta name="description" content="Future 996 workers"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/OIP-C.jpg"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/common/jquery.fancybox.min.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="
+哈希表哈希表是一種常見的數據結構，用於快速查找、插入和刪除。在判斷一個元素是否在集合中出現時，可以考慮使用哈希表。以下是一些常見的哈希結構：
+1. 數組當鍵是整數或具有範圍的整數時，可以使用數組。例如，數組可用於實現計數排序，統計元素出現的次數。當需要直接通過索引或位置訪問元素時，數組是一個很好的選擇。
+2. Set當只需要存儲不重復的元素，並且不需要與每個元素關聯其他信息時，可以使用 Set。Set 提供了 O(1) 時間復雜度的查找和插入操作，用於判斷元素是否存在。
+3. Map當需要將鍵映射到值時，或者需要關聯每個鍵（或一組鍵）與一些信息時，可以使用 Map。在一些問題中，例如統計元素的頻率，將元素分組等，Map 是一個常見的選擇。如果需要在 O(1) 時間內查找、插入和刪除鍵值對，HashMap .."><meta name="generator" content="Hexo 7.0.0"></head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Zn-dio's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">哈希表的学习及应用</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-text">哈希表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B8%E7%B5%84"><span class="toc-text">1. 數組</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Set"><span class="toc-text">2. Set</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Map"><span class="toc-text">3. Map</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E7%A2%B0%E6%92%9E"><span class="toc-text">哈希碰撞</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%8B%89%E9%93%BE%E6%B3%95"><span class="toc-text">1.拉链法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%BA%BF%E6%80%A7%E6%8E%A2%E6%B5%8B%E6%B3%95"><span class="toc-text">2.线性探测法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LeetCode-242-%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E7%95%B0%E4%BD%8D%E8%A9%9E"><span class="toc-text">LeetCode 242. 有效的字母異位詞</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3%EF%BC%88%E6%95%B8%E7%B5%84%EF%BC%89"><span class="toc-text">题解（數組）:</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LeetCode-49-%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84"><span class="toc-text">LeetCode 49. 字母异位词分组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3%EF%BC%88map%EF%BC%89"><span class="toc-text">题解（map）:</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/Hash%20Table"><i class="tag post-item-tag">Hash Table</i></a><a href="/tags/LeetCode"><i class="tag post-item-tag">LeetCode</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">哈希表的学习及应用</h1><time class="has-text-grey" datetime="2023-11-16T16:00:00.000Z">2023-11-17</time><article class="mt-2 post-content"><p><img src="/images/tree.png" alt="示例图片"></p>
+<h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h1><p>哈希表是一種常見的數據結構，用於快速查找、插入和刪除。在判斷一個元素是否在集合中出現時，可以考慮使用哈希表。以下是一些常見的哈希結構：</p>
+<h2 id="1-數組"><a href="#1-數組" class="headerlink" title="1. 數組"></a>1. 數組</h2><p>當鍵是整數或具有範圍的整數時，可以使用數組。例如，數組可用於實現計數排序，統計元素出現的次數。當需要直接通過索引或位置訪問元素時，數組是一個很好的選擇。</p>
+<h2 id="2-Set"><a href="#2-Set" class="headerlink" title="2. Set"></a>2. Set</h2><p>當只需要存儲不重復的元素，並且不需要與每個元素關聯其他信息時，可以使用 Set。Set 提供了 O(1) 時間復雜度的查找和插入操作，用於判斷元素是否存在。</p>
+<h2 id="3-Map"><a href="#3-Map" class="headerlink" title="3. Map"></a>3. Map</h2><p>當需要將鍵映射到值時，或者需要關聯每個鍵（或一組鍵）與一些信息時，可以使用 Map。在一些問題中，例如統計元素的頻率，將元素分組等，Map 是一個常見的選擇。如果需要在 O(1) 時間內查找、插入和刪除鍵值對，HashMap 是一個很好的選擇。如果需要按照鍵的順序（升序或降序）來迭代訪問元素，可以使用 TreeMap。</p>
+<h1 id="哈希碰撞"><a href="#哈希碰撞" class="headerlink" title="哈希碰撞"></a>哈希碰撞</h1><p>hashCode得到的数值大于 哈希表的大小了，也就是大于tableSize，这意味着避免不了会有几个数据同时映射到哈希表 同一个索引下标的位置，称为哈希碰撞。</p>
+<h2 id="1-拉链法"><a href="#1-拉链法" class="headerlink" title="1.拉链法"></a>1.拉链法</h2><p>这种方案由数组和链表两种数据结构组成。如果发生了元素重复，就让冲突的位置变为一个链表。</p>
+<h2 id="2-线性探测法"><a href="#2-线性探测法" class="headerlink" title="2.线性探测法"></a>2.线性探测法</h2><p>当经过哈希函数计算得到的值发生冲突后，将冲突元素放在旁边空闲位置。</p>
+<h1 id="LeetCode-242-有效的字母異位詞"><a href="#LeetCode-242-有效的字母異位詞" class="headerlink" title="LeetCode 242. 有效的字母異位詞"></a>LeetCode 242. <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/valid-anagram/">有效的字母異位詞</a></h1><p>給定兩個字符串 s 和 t，編寫一個函數來判斷 t 是否是 s 的字母異位詞。</p>
+<p><strong>示例 :</strong></p>
+<pre><code>输入: s = &quot;anagram&quot;, t = &quot;nagaram&quot;
+输出: true
+输入: s = &quot;rat&quot;, t = &quot;car&quot;
+输出: false
+</code></pre>
+<h2 id="题解（數組）"><a href="#题解（數組）" class="headerlink" title="题解（數組）:"></a>题解（數組）:</h2><p>定义一个数组叫做record用来上记录字符串s里字符出现的次数。需要把字符映射到数组也就是哈希表的索引下标上，因为字符a到字符z的ASCII是26个连续的数值，所以字符a映射为下标0，相应的字符z映射为下标25。</p>
+<pre><code>class Solution &#123;
+    public List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs) &#123;
+        Map&lt;String, List&lt;String&gt;&gt; map = new HashMap&lt;String, List&lt;String&gt;&gt;();
+        for (String str : strs) &#123;
+            int[] counts = new int[26];
+            int length = str.length();
+            for (int i = 0; i &lt; length; i++) &#123;
+                counts[str.charAt(i) - &#39;a&#39;]++;
+            &#125;
+            // 将每个出现次数大于 0 的字母和出现次数按顺序拼接成字符串，作为哈希表的键
+            StringBuffer sb = new StringBuffer();
+            for (int i = 0; i &lt; 26; i++) &#123;
+                if (counts[i] != 0) &#123;
+                    sb.append((char) (&#39;a&#39; + i));
+                    sb.append(counts[i]);
+                &#125;
+            &#125;
+            String key = sb.toString();
+            List&lt;String&gt; list = map.getOrDefault(key, new ArrayList&lt;String&gt;());
+            list.add(str);
+            map.put(key, list);
+        &#125;
+        return new ArrayList&lt;List&lt;String&gt;&gt;(map.values());
+    &#125;
+&#125;
+</code></pre>
+<h1 id="LeetCode-49-字母异位词分组"><a href="#LeetCode-49-字母异位词分组" class="headerlink" title="LeetCode 49. 字母异位词分组"></a>LeetCode 49. <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/group-anagrams/?envType=study-plan-v2&envId=top-100-liked">字母异位词分组</a></h1><p>给定一个字符串数组，将字母异位词组合在一起。字母异位词指的是由相同的字符按照不同的顺序组成的单词。</p>
+<p><strong>示例 :</strong></p>
+<pre><code>输入: [&quot;eat&quot;, &quot;tea&quot;, &quot;tan&quot;, &quot;ate&quot;, &quot;nat&quot;, &quot;bat&quot;]
+输出: [
+[&quot;ate&quot;,&quot;eat&quot;,&quot;tea&quot;],
+[&quot;nat&quot;,&quot;tan&quot;],
+[&quot;bat&quot;]
+]
+</code></pre>
+<h2 id="题解（map）"><a href="#题解（map）" class="headerlink" title="题解（map）:"></a>题解（map）:</h2></article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><em></em><a class="button is-default" href="/2023/11/16/Java%20Web%20%E5%AD%B8%E7%BF%92%E8%B7%AF%E7%B7%9A/" title="Java Web 學習路線"><span class="has-text-weight-semibold">Next: Java Web 學習路線</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Haojen/Claudia-theme-blog" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Zn-dio"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Zn-dio 2023</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"></script></body></html>
