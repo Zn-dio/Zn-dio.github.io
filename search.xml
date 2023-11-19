@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>手机抓包工具及原理</title>
+      <link href="/2023/11/19/%E6%89%8B%E6%9C%BA%E6%8A%93%E5%8C%85%E5%AE%9E%E6%88%98/"/>
+      <url>/2023/11/19/%E6%89%8B%E6%9C%BA%E6%8A%93%E5%8C%85%E5%AE%9E%E6%88%98/</url>
+      
+        <content type="html"><![CDATA[<p><img src="/images/hacker.png" alt="示例图片"></p><h1 id="手机抓包工具及原理"><a href="#手机抓包工具及原理" class="headerlink" title="手机抓包工具及原理"></a>手机抓包工具及原理</h1><p>在移动应用开发中，抓包是一种常见的调试和分析网络请求的手段。以下是一些常用的抓包工具及简要介绍：</p><ol><li><p><strong>VMOS Pro:</strong></p><ul><li>虚拟机应用，用于在Android设备上创建虚拟环境。</li></ul></li><li><p><strong>HttpCanary:</strong></p><ul><li>抓包工具，用于监视和分析网络请求，支持HTTPS。</li></ul></li><li><p><strong>JustTrustMe:</strong></p><ul><li>Xposed框架模块，用于绕过SSL证书验证，方便抓取HTTPS请求。</li></ul></li><li><p><strong>JustMePlus &amp; JustMeAlready:</strong></p><ul><li>应用或模块，可能是一些变种工具，具体功能需要查阅相关文档。</li></ul></li><li><p><strong>MT管理工具:</strong></p><ul><li>待具体说明，可能是一款管理工具。</li></ul></li></ol><h2 id="抓包原理"><a href="#抓包原理" class="headerlink" title="抓包原理"></a>抓包原理</h2><ul><li><p><strong>截取C端到S端的数据：</strong></p><ul><li>通过在设备和服务器之间插入代理，抓包工具截获客户端（C端）到服务器（S端）的数据。</li></ul></li><li><p><strong>SSL处理：</strong></p><ul><li>由于涉及到SSL等加密协议，一些抓包工具可能需要绕过证书验证，以便能够查看加密的HTTPS请求。</li></ul></li></ul><p>详细原理待补充。</p><h2 id="过程遇到的问题"><a href="#过程遇到的问题" class="headerlink" title="过程遇到的问题"></a>过程遇到的问题</h2><p>在抓包过程中，可能会遇到一些问题，例如：</p><ul><li><p><strong>手机根目录与内部存储：</strong></p><ul><li>需要理解手机根目录和内部存储的具体含义，以便更好地操作文件和路径。</li></ul></li><li><p><strong>手机未Root导致中止：</strong></p><ul><li>由于手机未Root，可能会受到一些限制。在没有Root权限的情况下，需要使用虚拟机等方式继续抓包的探索。</li></ul></li></ul><p>记录这些问题有助于日后更好地解决类似挑战。</p><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ul><li><a href="CSDN%E5%8D%9A%E5%AE%A2%E9%93%BE%E6%8E%A5">安卓端小黄鸟抓包保姆级教程（附带全套工具，完美解决无网络和ROOT问题）</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Mobile Development </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 抓包工具 </tag>
+            
+            <tag> 安卓 </tag>
+            
+            <tag> 虚拟机 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>双指针的学习及使用</title>
       <link href="/2023/11/18/%E5%8F%8C%E6%8C%87%E9%92%88%E7%9A%84%E5%AD%A6%E4%B9%A0%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
       <url>/2023/11/18/%E5%8F%8C%E6%8C%87%E9%92%88%E7%9A%84%E5%AD%A6%E4%B9%A0%E5%8F%8A%E4%BD%BF%E7%94%A8/</url>
