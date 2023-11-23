@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>二叉树的学习及使用</title>
+      <link href="/2023/11/23/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%AD%A6%E4%B9%A0%E5%8F%8A%E4%BD%BF%E7%94%A8/"/>
+      <url>/2023/11/23/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%AD%A6%E4%B9%A0%E5%8F%8A%E4%BD%BF%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h1><h2 id="种类"><a href="#种类" class="headerlink" title="种类"></a>种类</h2><p>在二叉树的学习中，常见的种类包括：</p><ol><li><p><strong>满二叉树：</strong></p><ul><li>每个节点都有零个或两个子节点，且所有叶子节点都在同一层。</li></ul></li><li><p><strong>完全二叉树：</strong></p><ul><li>除了最后一层外，每一层都被完全填充，且所有节点都保持向左对齐。</li></ul></li><li><p><strong>二叉搜索树：</strong></p><ul><li>每个节点的左子树只包含小于当前节点的值，右子树只包含大于当前节点的值。</li></ul></li><li><p><strong>平衡二叉搜索树（AVL）：</strong></p><ul><li>一种特殊的二叉搜索树，保持左右子树的高度差不超过1。</li></ul></li></ol><h2 id="存储方式"><a href="#存储方式" class="headerlink" title="存储方式"></a>存储方式</h2><p>二叉树的存储方式包括：</p><ol><li><p><strong>链式存储：</strong></p><ul><li>通过节点之间的引用关系连接。</li></ul></li><li><p><strong>顺序存储（数组）：</strong></p><ul><li>通过数组的索引关系表示节点之间的位置。</li></ul></li></ol><h2 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h2><p>对二叉树进行遍历有深度优先遍历和广度优先遍历两种方式：</p><ol><li><p><strong>深度优先遍历：</strong></p><ul><li>前序遍历（根、左、右）、中序遍历（左、根、右）、后序遍历（左、右、根）。这里前中后，其实指的就是根节点的遍历顺序<br><img src="/images/TraverseTree.png" alt="二叉树示例图片"></li></ul></li><li><p><strong>广度优先遍历：</strong></p><ul><li>层次遍历，逐层从左到右遍历。</li></ul></li></ol><h2 id="二叉树的定义"><a href="#二叉树的定义" class="headerlink" title="二叉树的定义"></a>二叉树的定义</h2><pre><code>public class TreeNode &#123;    int val;    TreeNode left;    TreeNode right;    TreeNode() &#123;&#125;    TreeNode(int val) &#123; this.val = val; &#125;    TreeNode(int val, TreeNode left, TreeNode right) &#123;        this.val = val;        this.left = left;        this.right = right;    &#125;&#125;</code></pre><h2 id="算法实现：前序遍历"><a href="#算法实现：前序遍历" class="headerlink" title="算法实现：前序遍历"></a>算法实现：前序遍历</h2><pre><code>class Solution &#123;    public List&lt;Integer&gt; preorderTraversal(TreeNode root) &#123;        List&lt;Integer&gt; result = new ArrayList&lt;Integer&gt;();        preorder(root, result);        return result;    &#125;    public void preorder(TreeNode root, List&lt;Integer&gt; result) &#123;        if (root == null) &#123;            return;        &#125;        result.add(root.val);        preorder(root.left, result);        preorder(root.right, result);    &#125;&#125;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Data Structures </category>
+          
+          <category> Algorithms </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 二叉树 </tag>
+            
+            <tag> 递归 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>接雨水</title>
       <link href="/2023/11/22/%E6%8E%A5%E9%9B%A8%E6%B0%B4/"/>
       <url>/2023/11/22/%E6%8E%A5%E9%9B%A8%E6%B0%B4/</url>

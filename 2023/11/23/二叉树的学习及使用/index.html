@@ -1,0 +1,122 @@
+<!DOCTYPE html><html class="appearance-dark" lang="en"><head><meta charset="UTF-8"><title>二叉树的学习及使用</title><meta name="description" content="Future 996 workers"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/OIP-C.jpg"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/common/jquery.fancybox.min.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="二叉树种类在二叉树的学习中，常见的种类包括：
+
+满二叉树：
+
+每个节点都有零个或两个子节点，且所有叶子节点都在同一层。
+
+
+完全二叉树：
+
+除了最后一层外，每一层都被完全填充，且所有节点都保持向左对齐。
+
+
+二叉搜索树：
+
+每个节点的左子树只包含小于当前节点的值，右子树只包含大于当前节点的值。
+
+
+平衡二叉搜索树（AVL）：
+
+一种特殊的二叉搜索树，保持左右子树的高度差不超过1。
+
+
+
+存储方式二叉树的存储方式包括：
+
+链式存储：
+
+通过节点之间的引用关系连接。
+
+
+顺序存储（数组）：
+
+通过数组的索引关系表示节点之间的位置。
+
+
+
+遍历对二叉树进行遍历有深度优先遍历和广度优先遍历两种方式：
+
+深度优先遍历：
+
+前序遍历（根、左、右）、中序遍历（左、根、右）、后序遍历（左、右、根）。这里前中后，其实指的就是.."><meta name="generator" content="Hexo 7.0.0"></head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">Zn-dio's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">二叉树的学习及使用</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Click back to the top</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">Home</a></h3><h3 class="is-inline-block"><a href="/about">About</a></h3><h3 class="is-inline-block"><a href="/archives">Archives</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%8D%E7%B1%BB"><span class="toc-text">种类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">存储方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%8D%E5%8E%86"><span class="toc-text">遍历</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">二叉树的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%EF%BC%9A%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86"><span class="toc-text">算法实现：前序遍历</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91"><i class="tag post-item-tag">二叉树</i></a><a href="/tags/%E9%80%92%E5%BD%92"><i class="tag post-item-tag">递归</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">二叉树的学习及使用</h1><time class="has-text-grey" datetime="2023-11-23T09:04:57.000Z">2023-11-23</time><article class="mt-2 post-content"><h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h1><h2 id="种类"><a href="#种类" class="headerlink" title="种类"></a>种类</h2><p>在二叉树的学习中，常见的种类包括：</p>
+<ol>
+<li><p><strong>满二叉树：</strong></p>
+<ul>
+<li>每个节点都有零个或两个子节点，且所有叶子节点都在同一层。</li>
+</ul>
+</li>
+<li><p><strong>完全二叉树：</strong></p>
+<ul>
+<li>除了最后一层外，每一层都被完全填充，且所有节点都保持向左对齐。</li>
+</ul>
+</li>
+<li><p><strong>二叉搜索树：</strong></p>
+<ul>
+<li>每个节点的左子树只包含小于当前节点的值，右子树只包含大于当前节点的值。</li>
+</ul>
+</li>
+<li><p><strong>平衡二叉搜索树（AVL）：</strong></p>
+<ul>
+<li>一种特殊的二叉搜索树，保持左右子树的高度差不超过1。</li>
+</ul>
+</li>
+</ol>
+<h2 id="存储方式"><a href="#存储方式" class="headerlink" title="存储方式"></a>存储方式</h2><p>二叉树的存储方式包括：</p>
+<ol>
+<li><p><strong>链式存储：</strong></p>
+<ul>
+<li>通过节点之间的引用关系连接。</li>
+</ul>
+</li>
+<li><p><strong>顺序存储（数组）：</strong></p>
+<ul>
+<li>通过数组的索引关系表示节点之间的位置。</li>
+</ul>
+</li>
+</ol>
+<h2 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h2><p>对二叉树进行遍历有深度优先遍历和广度优先遍历两种方式：</p>
+<ol>
+<li><p><strong>深度优先遍历：</strong></p>
+<ul>
+<li>前序遍历（根、左、右）、中序遍历（左、根、右）、后序遍历（左、右、根）。这里前中后，其实指的就是根节点的遍历顺序<br><img src="/images/TraverseTree.png" alt="二叉树示例图片"></li>
+</ul>
+</li>
+<li><p><strong>广度优先遍历：</strong></p>
+<ul>
+<li>层次遍历，逐层从左到右遍历。</li>
+</ul>
+</li>
+</ol>
+<h2 id="二叉树的定义"><a href="#二叉树的定义" class="headerlink" title="二叉树的定义"></a>二叉树的定义</h2><pre><code>public class TreeNode &#123;
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode() &#123;&#125;
+    TreeNode(int val) &#123; this.val = val; &#125;
+    TreeNode(int val, TreeNode left, TreeNode right) &#123;
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    &#125;
+&#125;
+</code></pre>
+<h2 id="算法实现：前序遍历"><a href="#算法实现：前序遍历" class="headerlink" title="算法实现：前序遍历"></a>算法实现：前序遍历</h2><pre><code>class Solution &#123;
+    public List&lt;Integer&gt; preorderTraversal(TreeNode root) &#123;
+        List&lt;Integer&gt; result = new ArrayList&lt;Integer&gt;();
+        preorder(root, result);
+        return result;
+    &#125;
+
+    public void preorder(TreeNode root, List&lt;Integer&gt; result) &#123;
+        if (root == null) &#123;
+            return;
+        &#125;
+        result.add(root.val);
+        preorder(root.left, result);
+        preorder(root.right, result);
+    &#125;
+&#125;
+</code></pre>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><em></em><a class="button is-default" href="/2023/11/22/%E6%8E%A5%E9%9B%A8%E6%B0%B4/" title="接雨水"><span class="has-text-weight-semibold">Next: 接雨水</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section><article class="mt-6 comment-container"><script async repo="Haojen/Claudia-theme-blog" src="https://utteranc.es/client.js" issue-term="pathname" theme="preferred-color-scheme"></script></article></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Zn-dio"><i class="iconfont icon-github"></i></a><!-- Ins--><a title="instagram" target="_blank" rel="noopener nofollow" href="//www.instagram.com//"><i class="iconfont icon-ins"></i></a><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--><a title="facebook" target="_blank" rel="noopener nofollow" href="//www.facebook.com//"><i class="iconfont icon-tian7_facebook"></i></a></section><p><span>Copyright ©</span><span> Zn-dio 2023</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"></script></body></html>
